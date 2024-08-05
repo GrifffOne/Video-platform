@@ -1,0 +1,12 @@
+.sidebar {
+	@apply p-layout;
+
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.sidebar ::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}

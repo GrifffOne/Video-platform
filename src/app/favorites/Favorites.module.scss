@@ -1,0 +1,75 @@
+
+@mixin fade-bg-gradient($direction: 90deg) {
+	&::before {
+		@apply w-full h-full absolute top-1 left-0 z-1;
+		content: '';
+
+		background: linear-gradient(
+			$direction,
+			#101215 3.31%,
+			rgba(#101215, 0.99) 7.71%,
+			rgba(#101215, 0.96) 12.11%,
+			rgba(#101215, 0.91) 16.51%,
+			rgba(#101215, 0.85) 22.91%,
+			rgba(#101215, 0.76) 25.31%,
+			rgba(#101215, 0.67) 29.71%,
+			rgba(#101215, 0.55) 34.11%,
+			rgba(#101215, 0.44) 38.52%,
+			rgba(#101215, 0.33) 42.92%,
+			rgba(#101215, 0.23) 47.32%,
+			rgba(#101215, 0.15) 51.72%,
+			rgba(#101215, 0.08) 56.12%,
+			rgba(#101215, 0.03) 60.52%,
+			rgba(#101215, 0.01) 64.92%,
+			rgba(#101215, 0) 69.32%
+		);
+	}
+}
+
+.favorites {
+	@apply flex flex-wrap mt-12;
+}
+
+.containerLoader {
+	@apply w-full flex flex-wrap;
+
+	.skeletonLoader {
+		@apply relative mb-8 h-44;
+		width: 31%;
+
+		&:nth-child(1),
+		&:nth-child(3) {
+			@apply mr-8;
+		}
+	}
+}
+
+.itemWrapper {
+	@apply relative mb-8 h-44 mr-8 animate-fade transition-transform hover:-translate-y-3;
+	width: 31%;
+
+	&:nth-child(3n) {
+		@apply mr-0;
+	}
+
+	.item {
+		@apply relative z-1 w-full h-full flex items-end shadow-lg rounded-layout overflow-hidden;
+
+		@include fade-bg-gradient(0deg);
+		&::before {
+			@apply z-2;
+		}
+
+		img {
+			@apply image-like-bg;
+		}
+
+		.title {
+			@apply relative z-3 text-center m-4 w-full font-semibold text-white text-shadow;
+		}
+	}
+
+	> button {
+		@apply z-3 block -left-3 -top-1 right-auto;
+	}
+}
